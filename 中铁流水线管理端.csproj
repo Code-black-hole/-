@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EDE4B1FF-577B-4F8F-90DF-E4F81BB28B1B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>中铁流水线管理端</RootNamespace>
+    <AssemblyName>中铁流水线管理端</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DLJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DLJM.Designer.cs">
+      <DependentUpon>DLJM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GRJSJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GRJSJM.Designer.cs">
+      <DependentUpon>GRJSJM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GRSCHJHSXZJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GRSCHJHSXZJM.Designer.cs">
+      <DependentUpon>GRSCHJHSXZJM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityClass.cs" />
+    <Compile Include="identityClass\JobId.cs" />
+    <Compile Include="SCXBJJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCXBJJM.Designer.cs">
+      <DependentUpon>SCXBJJM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCXGYLXBJJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCXGYLXBJJM.Designer.cs">
+      <DependentUpon>SCXGYLXBJJM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCXJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCXJM.Designer.cs">
+      <DependentUpon>SCXJM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCXGYLXJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCXGYLXJM.Designer.cs">
+      <DependentUpon>SCXGYLXJM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkerProcessClass.cs" />
+    <Compile Include="WTSBJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WTSBJM.Designer.cs">
+      <DependentUpon>WTSBJM.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DLJM.resx">
+      <DependentUpon>DLJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GRJSJM.resx">
+      <DependentUpon>GRJSJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GRSCHJHSXZJM.resx">
+      <DependentUpon>GRSCHJHSXZJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCXBJJM.resx">
+      <DependentUpon>SCXBJJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCXGYLXBJJM.resx">
+      <DependentUpon>SCXGYLXBJJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCXGYLXJM.resx">
+      <DependentUpon>SCXGYLXJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCXJM.resx">
+      <DependentUpon>SCXJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="WTSBJM.resx">
+      <DependentUpon>WTSBJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
