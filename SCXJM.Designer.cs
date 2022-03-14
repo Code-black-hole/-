@@ -34,6 +34,7 @@ namespace 中铁流水线管理端
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSCXJM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,11 +87,21 @@ namespace 中铁流水线管理端
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(755, 143);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // SCXJM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -110,5 +121,6 @@ namespace 中铁流水线管理端
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button button4;
     }
 }
