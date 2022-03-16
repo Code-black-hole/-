@@ -91,7 +91,7 @@ namespace 中铁流水线管理端
                         }
                         else if (dr.RowState == DataRowState.Modified)//修改
                         {
-                            strSQL6 = @"update 工艺流程表 set ProcessId='" + dr["工序编号"].ToString().Trim() + @"',ProcessName = '" + dr["工序名称"].ToString().Trim() + @"',WorkUnit='" + dr["工作单元"].ToString().Trim() + @"',ProcessingTime='" + dr["加工时间"].ToString().Trim() + @"',ProcessingPersonnel='" + dr["加工人员"].ToString().Trim() + @"',SortId='" + dr["工序顺序序号"].ToString().Trim() + @"'where ProductId  = '" + dr["产品编号"].ToString().Trim() + @"'";
+                            strSQL6 = @"update 工艺流程表 set ProcessId='" + dr["工序编号"].ToString().Trim() + @"',WorkUnit='" + dr["工作单元"].ToString().Trim() + @"',ProcessingTime='" + dr["加工时间"].ToString().Trim() + @"',ProcessingPersonnel='" + dr["加工人员"].ToString().Trim() + @"',SortId='" + dr["工序顺序序号"].ToString().Trim() + @"',ProductId  = '" + dr["产品编号"].ToString().Trim() + @"'where ProcessName = '" + dr["工序名称"].ToString().Trim() + @"'";
 
                         }
                         SqlCommand comm = new SqlCommand(strSQL6, sqlConnection);

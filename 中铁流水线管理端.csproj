@@ -99,6 +99,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCXKQJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCXKQJM.Designer.cs">
+      <DependentUpon>SCXKQJM.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkerProcessClass.cs" />
     <Compile Include="WTSBJM.cs">
       <SubType>Form</SubType>
@@ -139,6 +145,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SCXKQJM.resx">
+      <DependentUpon>SCXKQJM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WTSBJM.resx">
       <DependentUpon>WTSBJM.cs</DependentUpon>
     </EmbeddedResource>

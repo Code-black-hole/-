@@ -71,7 +71,7 @@ namespace 中铁流水线管理端
             
 
         }
-
+        public static string l;//记录生产线编号
         private void dgvSCXJM_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
@@ -79,21 +79,27 @@ namespace 中铁流水线管理端
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             int j = this.dgvSCXJM.CurrentRow.Index;
+            l= dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim();
             x = dgvSCXJM.Rows[j].Cells[6].Value.ToString().Trim();
-            if (x == "1")
+            if (x == "开启")
             {
                 if (MessageBox.Show("确认要关闭该生产线么？", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    strSQL = "update 生产线表 set State = '0' where ProductionLineId = '"+ dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "'";
+                    //删除表中除生产线编号和状态外的其他信息
+                    strSQL = "update 生产线表 set ProductionLineName=null , ProductionWorkshop=null , ProductId=null , ProductName=null , Memo=null where ProductionLineId='" + l + "' ";
                     SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                     int count = order.ExecuteNonQuery();
+                    //转换该生产线状态列
+                    strSQL = "update 生产线表 set State = '关闭' where ProductionLineId = '"+ dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "'";
+                     order = new SqlCommand(strSQL, sqlConnection);
+                     count = order.ExecuteNonQuery();
+                    //删除对应工序中的加工人员
+                    strSQL = "update 工艺流程表 set ProcessingPersonnel=null";
+                    order = new SqlCommand(strSQL, sqlConnection);
+                    count = order.ExecuteNonQuery();
                     //将该操作录入生产线状态表
-                    string str2 = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                    sqlConnection = new SqlConnection(str2);
-                    if (sqlConnection.State == System.Data.ConnectionState.Closed)
-                        sqlConnection.Open();
-                    string strSQL3 = "insert into 生产线状态表 (ProductionLineId,State,OperationDate,Operator) values('"+ dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "','0','"+DateTime.Now+"','"+DLJM.identityClass.Name+"')";
-                    SqlCommand order1 = new SqlCommand(strSQL3, sqlConnection);
+                     strSQL = "insert into 生产线状态表 (ProductionLineId,State,OperationDate,Operator) values('"+ dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "','关闭','"+DateTime.Now+"','"+DLJM.identityClass.Name+"')";
+                    order = new SqlCommand(strSQL, sqlConnection);
                     int count1 = order.ExecuteNonQuery();
                 }
             }
@@ -101,16 +107,16 @@ namespace 中铁流水线管理端
             {
                 if (MessageBox.Show("确认要开启该生产线么？", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    strSQL = "update 生产线表 set State = '1' where ProductionLineId = '" + dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "'";
+                    
+                    strSQL = "update 生产线表 set State = '开启' where ProductionLineId = '" + dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "'";
                     SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                     int count = order.ExecuteNonQuery();
-                    string str2 = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                    sqlConnection = new SqlConnection(str2);
-                    if (sqlConnection.State == System.Data.ConnectionState.Closed)
-                        sqlConnection.Open();
-                    string strSQL3 = "insert into 生产线状态表 (ProductionLineId,State,OperationDate,Operator) values('" + dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "','1','" + DateTime.Now + "','" + DLJM.identityClass.Name + "')";
-                    SqlCommand order1 = new SqlCommand(strSQL3, sqlConnection);
+                   
+                    strSQL = "insert into 生产线状态表 (ProductionLineId,State,OperationDate,Operator) values('" + dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "','开启','" + DateTime.Now + "','" + DLJM.identityClass.Name + "')";
+                    order = new SqlCommand(strSQL, sqlConnection);
                     int count1 = order.ExecuteNonQuery();
+                    SCXKQJM s = new SCXKQJM();
+                    s.ShowDialog();
                 }
             }
         }

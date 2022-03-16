@@ -26,6 +26,7 @@ namespace 中铁流水线管理端
         int count = 0;//生产进度
         int end = 0;//是否为最后一道工序的标志
         DataTable dt;
+        public static GLYQXClass glyqxClass { get; set; } = new GLYQXClass();
 
         public GRJSJM()
         {
@@ -84,8 +85,10 @@ namespace 中铁流水线管理端
 
         private void btnStop_Click(object sender, EventArgs e)//暂停和继续是同一个按钮相互切换
         {
-            
-            
+            GLYQXJM s = new GLYQXJM();
+            s.ShowDialog();
+            if (glyqxClass.flag == 1)
+            {
                 if (flag == 0)//
                 {
                     TimeNow2 = DateTime.Now;
@@ -115,6 +118,8 @@ namespace 中铁流水线管理端
                     SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                     int count1 = order.ExecuteNonQuery();
                 }
+                glyqxClass.flag = 0;
+            }
             
         }
 

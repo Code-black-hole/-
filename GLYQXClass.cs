@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace 中铁流水线管理端
 {
-    class GLYQXClass
+   public class GLYQXClass
     {
         /// <summary>
-        /// 管理员权限是否通过
+        /// 管理员权限是否通过,0为不通过，1为通过
         /// </summary>
-        public string flag { get; set; }
+        public int flag { get; set; }
     }
 }
