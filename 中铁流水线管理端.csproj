@@ -52,6 +52,13 @@
     <Compile Include="DLJM.Designer.cs">
       <DependentUpon>DLJM.cs</DependentUpon>
     </Compile>
+    <Compile Include="GLYQXClass.cs" />
+    <Compile Include="GLYQXJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GLYQXJM.Designer.cs">
+      <DependentUpon>GLYQXJM.cs</DependentUpon>
+    </Compile>
     <Compile Include="GRJSJM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +108,9 @@
     </Compile>
     <EmbeddedResource Include="DLJM.resx">
       <DependentUpon>DLJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GLYQXJM.resx">
+      <DependentUpon>GLYQXJM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GRJSJM.resx">
       <DependentUpon>GRJSJM.cs</DependentUpon>

@@ -84,35 +84,38 @@ namespace 中铁流水线管理端
 
         private void btnStop_Click(object sender, EventArgs e)//暂停和继续是同一个按钮相互切换
         {
-            if (flag == 0)//
-            {
-                TimeNow2 = DateTime.Now;
-                timer1.Enabled = false;
-                btnStop.Text = "继续";
-                flag = 1;
-                labState.Text = "暂停";
-                string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                sqlConnection = new SqlConnection(str);
-                if (sqlConnection.State == System.Data.ConnectionState.Closed)
-                    sqlConnection.Open();
-                strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','暂停','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
-                SqlCommand order = new SqlCommand(strSQL, sqlConnection);
-                int count1 = order.ExecuteNonQuery();
-            }
-            else
-            {
-                timer1.Enabled = true;
-                TimeNow += DateTime.Now - TimeNow2;
-                btnStop.Text = "暂停";
-                flag = 0;
-                string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                sqlConnection = new SqlConnection(str);
-                if (sqlConnection.State == System.Data.ConnectionState.Closed)
-                    sqlConnection.Open();
-                strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','继续','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
-                SqlCommand order = new SqlCommand(strSQL, sqlConnection);
-                int count1 = order.ExecuteNonQuery();
-            }
+            
+            
+                if (flag == 0)//
+                {
+                    TimeNow2 = DateTime.Now;
+                    timer1.Enabled = false;
+                    btnStop.Text = "继续";
+                    flag = 1;
+                    labState.Text = "暂停";
+                    string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                    sqlConnection = new SqlConnection(str);
+                    if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                        sqlConnection.Open();
+                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','暂停','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
+                    SqlCommand order = new SqlCommand(strSQL, sqlConnection);
+                    int count1 = order.ExecuteNonQuery();
+                }
+                else
+                {
+                    timer1.Enabled = true;
+                    TimeNow += DateTime.Now - TimeNow2;
+                    btnStop.Text = "暂停";
+                    flag = 0;
+                    string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                    sqlConnection = new SqlConnection(str);
+                    if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                        sqlConnection.Open();
+                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','继续','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
+                    SqlCommand order = new SqlCommand(strSQL, sqlConnection);
+                    int count1 = order.ExecuteNonQuery();
+                }
+            
         }
 
         private void btnOver_Click(object sender, EventArgs e)
