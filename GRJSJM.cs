@@ -15,7 +15,7 @@ namespace 中铁流水线管理端
 {
     public partial class GRJSJM : Form
     {
-        string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+       // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
         System.DateTime TimeNow = new DateTime();//起始点
         System.DateTime TimeNow2 = new DateTime();//暂停点
         TimeSpan TimeCount = new TimeSpan();//单个工时
@@ -25,7 +25,7 @@ namespace 中铁流水线管理端
         public static string strSQL, strSQL2;
         SqlConnection sqlConnection;
         int count = 0;//生产进度
-        int end = 0;//是否为最后一道工序的标志
+        int end = 0;//2为最后一道工序的标志,1为第一道工序
         DataTable dt;
         public static GLYQXClass glyqxClass { get; set; } = new GLYQXClass();
         public static WorkerProcessClass workerProcessClass { get; set; } = new WorkerProcessClass();
@@ -59,7 +59,13 @@ namespace 中铁流水线管理端
             for(int i=0;i<RowCount;i++)//判定当前工序是否为最后一道工序
             {
                 if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessId && dt.Rows[i][6].ToString() == RowCount.ToString())
+                {
+                    end = 2;
+                }
+                else if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessId && dt.Rows[i][6].ToString() == "1")
+                {
                     end = 1;
+                }
             }
         }
 
@@ -140,7 +146,7 @@ namespace 中铁流水线管理端
             AllTimeCount += TimeCount;
             labTotaltime.Text = AllTimeCount.ToString();
             count++;
-            if (end == 1)//如果当前为最后一道工序，结束后将自动在成品完成表中添加一个数据
+            if (end == 2)//如果当前为最后一道工序，结束后将自动在成品完成表中添加一个数据
             {
                // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
                 sqlConnection = new SqlConnection(PublicAnial.str);
@@ -149,6 +155,11 @@ namespace 中铁流水线管理端
                 strSQL = "insert into 成品完成表 (ProductId,ProductName,FinishedProductID,Date)values('" + GRSCHJHSXZJM.workerProcessClass.ProductId + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','1','" + DateTime.Now + "') ";
                 SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
+            }
+            else if(end==1)
+            {
+           
+
             }
         }
 
