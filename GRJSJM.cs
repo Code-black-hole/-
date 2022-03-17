@@ -28,7 +28,7 @@ namespace 中铁流水线管理端
         int end = 0;//是否为最后一道工序的标志
         DataTable dt;
         public static GLYQXClass glyqxClass { get; set; } = new GLYQXClass();
-
+        public static WorkerProcessClass workerProcessClass { get; set; } = new WorkerProcessClass();
         public GRJSJM()
         {
             InitializeComponent();
@@ -38,11 +38,13 @@ namespace 中铁流水线管理端
             this.btnStop.Enabled = false;
             this.btnOver.Enabled = false;
             labState.Text = "未开始";
+            
+
             //string PublicAnial.str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
             sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
-            strSQL = "select * from 工艺流程表 where ProductId='" + GRSCHJHSXZJM.workerProcessClass.ProductId + "'";
+            strSQL = "select * from 工艺流程表 where ProductId='" + workerProcessClass.ProductId + "'";
             SqlCommand order = new SqlCommand();
             //参数一：SQL语句  ，参数二：连接对象
             //SqlDataAdapter对象用于获取到表格并填充到数据集
