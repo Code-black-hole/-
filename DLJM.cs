@@ -22,8 +22,8 @@ namespace 中铁流水线管理端
         public DLJM()
         {
             InitializeComponent();
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+            //string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             
@@ -31,8 +31,8 @@ namespace 中铁流水线管理端
 
         private void button1_Click(object sender, EventArgs e)
         {
-            strSQL = "select * from 人员信息表 where Name='"+txtName.Text+"'and Password='"+txtPassword.Text+"'";
-            SqlCommand order = new SqlCommand(strSQL, sqlConnection);
+           // strSQL = "select * from 人员信息表 where Name='"+txtName.Text+"'and Password='"+txtPassword.Text+"'";
+            SqlCommand order = new SqlCommand(PublicAnial.str, sqlConnection);
             //参数一：SQL语句  ，参数二：连接对象
             //SqlDataAdapter对象用于获取到表格并填充到数据集
             SqlDataReader da =order.ExecuteReader();

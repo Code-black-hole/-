@@ -29,8 +29,8 @@ namespace 中铁流水线管理端
             InitializeComponent();
             cbxXZGX.Text = "";
             cbxXZSCX.Text = "";
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select * from 生产线表 ";
@@ -55,8 +55,8 @@ namespace 中铁流水线管理端
             if (cbxXZSCX.Text != "System.Data.DataRowView")
             {
                 //通过选取的生产线名称查询生产线表，获得对应的产品编号 
-                string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                sqlConnection = new SqlConnection(str);
+               // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
                 strSQL = "select * from 生产线表 where ProductionLineName='" + cbxXZSCX.Text.ToString().Trim() + "'";
@@ -73,8 +73,8 @@ namespace 中铁流水线管理端
                 dt = ds.Tables["生产线表"];
 
                 //通过获取到的产品编号查询对应的工序流程
-                string str1 = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                sqlConnection = new SqlConnection(str1);
+                //string str1 = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
                 strSQL2 = "select * from 工艺流程表 where ProductId='" + dt.Rows[0][3].ToString().Trim() + "'";

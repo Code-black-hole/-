@@ -29,8 +29,8 @@ namespace 中铁流水线管理端
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "update 生产线表 set ProductionLineName ='"+txtProductionLineName.Text.ToString()+ "',ProductionWorkshop='"+txtProductionWorkshop.Text.ToString()+ "',ProductId='"+txtProductId.Text.ToString()+ "',ProductName='"+txtProductName.Text.ToString()+ "',Time='"+DateTime.Now+"',Memo='"+txtMemo.Text.ToString()+"'where ProductionLineId = '" + SCXJM.l + "'";

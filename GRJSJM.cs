@@ -111,8 +111,8 @@ namespace 中铁流水线管理端
                     TimeNow += DateTime.Now - TimeNow2;
                     btnStop.Text = "暂停";
                     flag = 0;
-                    string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                    sqlConnection = new SqlConnection(str);
+                    //string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                    sqlConnection = new SqlConnection(PublicAnial.str);
                     if (sqlConnection.State == System.Data.ConnectionState.Closed)
                         sqlConnection.Open();
                     strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','继续','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
@@ -140,8 +140,8 @@ namespace 中铁流水线管理端
             count++;
             if (end == 1)//如果当前为最后一道工序，结束后将自动在成品完成表中添加一个数据
             {
-                string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                sqlConnection = new SqlConnection(str);
+               // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
                 strSQL = "insert into 成品完成表 (ProductId,ProductName,FinishedProductID,Date)values('" + GRSCHJHSXZJM.workerProcessClass.ProductId + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','1','" + DateTime.Now + "') ";

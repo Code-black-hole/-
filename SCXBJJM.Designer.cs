@@ -57,18 +57,18 @@ namespace 中铁流水线管理端
             // dgvSCXBJJM
             // 
             this.dgvSCXBJJM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSCXBJJM.Location = new System.Drawing.Point(31, 168);
+            this.dgvSCXBJJM.Location = new System.Drawing.Point(31, 166);
             this.dgvSCXBJJM.Name = "dgvSCXBJJM";
             this.dgvSCXBJJM.RowTemplate.Height = 23;
-            this.dgvSCXBJJM.Size = new System.Drawing.Size(641, 270);
+            this.dgvSCXBJJM.Size = new System.Drawing.Size(731, 272);
             this.dgvSCXBJJM.TabIndex = 0;
             this.dgvSCXBJJM.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSCXBJJM_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(467, 102);
+            this.button1.Location = new System.Drawing.Point(515, 102);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 43);
+            this.button1.Size = new System.Drawing.Size(100, 44);
             this.button1.TabIndex = 43;
             this.button1.Text = "显示全部";
             this.button1.UseVisualStyleBackColor = true;
@@ -76,9 +76,9 @@ namespace 中铁流水线管理端
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(334, 102);
+            this.btnFind.Location = new System.Drawing.Point(380, 102);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(88, 43);
+            this.btnFind.Size = new System.Drawing.Size(93, 43);
             this.btnFind.TabIndex = 42;
             this.btnFind.Text = "查找";
             this.btnFind.UseVisualStyleBackColor = true;
@@ -231,9 +231,9 @@ namespace 中铁流水线管理端
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(709, 168);
+            this.btnSave.Location = new System.Drawing.Point(654, 102);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 79);
+            this.btnSave.Size = new System.Drawing.Size(98, 43);
             this.btnSave.TabIndex = 44;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;

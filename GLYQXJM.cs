@@ -20,8 +20,8 @@ namespace 中铁流水线管理端
 
         private void button1_Click(object sender, EventArgs e)
         {
-            strSQL = "select * from 人员信息表 where Name='" + txtName.Text + "'and Password='" + txtPassword.Text + "'";
-            SqlCommand order = new SqlCommand(strSQL, sqlConnection);
+            //strSQL = "select * from 人员信息表 where Name='" + txtName.Text + "'and Password='" + txtPassword.Text + "'";
+            SqlCommand order = new SqlCommand(PublicAnial.str, sqlConnection);
             int count1 = order.ExecuteNonQuery();
             SqlDataReader da = order.ExecuteReader();
             if (da.HasRows)//满足用户名密码与数据库相匹配
@@ -54,8 +54,8 @@ namespace 中铁流水线管理端
         public GLYQXJM()
         {
             InitializeComponent();
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
            

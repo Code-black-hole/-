@@ -20,8 +20,8 @@ namespace 中铁流水线管理端
         public SCXJM()
         {
             InitializeComponent();
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+          //  string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select ProductionLineId AS '生产线编号',ProductionLineName AS '生产线名称', ProductionWorkshop AS '生产车间',ProductId as '产品编号',ProductName as '产品名称',Time AS '时间', State AS '状态',Memo AS '备注' from 生产线表 ";
@@ -41,8 +41,8 @@ namespace 中铁流水线管理端
        public string c;
         private void dgvSCXJM_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             //先从产品表查找该生产线生产产品的编号
@@ -57,8 +57,8 @@ namespace 中铁流水线管理端
         private void dgvSCXJM_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             //先从产品表查找该生产线生产产品的编号
@@ -74,8 +74,8 @@ namespace 中铁流水线管理端
         public static string l;//记录生产线编号
         private void dgvSCXJM_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+            //string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             int j = this.dgvSCXJM.CurrentRow.Index;
@@ -123,8 +123,8 @@ namespace 中铁流水线管理端
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+            //string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select ProductionLineId AS '生产线编号',ProductionLineName AS '生产线名称', ProductionWorkshop AS '生产车间',ProductId as '产品编号',ProductName as '产品名称',Time AS '时间', State AS '状态',Memo AS '备注' from 生产线表 ";

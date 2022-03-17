@@ -55,8 +55,8 @@ namespace 中铁流水线管理端
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            SqlConnection sqlConnection = new SqlConnection(str);
+           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            SqlConnection sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             DataTable changeTable = dt.GetChanges();

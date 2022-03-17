@@ -40,7 +40,7 @@ namespace 中铁流水线管理端
             // dgvSCXJM
             // 
             this.dgvSCXJM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSCXJM.Location = new System.Drawing.Point(35, 33);
+            this.dgvSCXJM.Location = new System.Drawing.Point(35, 39);
             this.dgvSCXJM.Name = "dgvSCXJM";
             this.dgvSCXJM.RowTemplate.Height = 23;
             this.dgvSCXJM.Size = new System.Drawing.Size(716, 296);
@@ -50,27 +50,27 @@ namespace 中铁流水线管理端
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(493, 369);
+            this.button1.Location = new System.Drawing.Point(495, 371);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 52);
+            this.button1.Size = new System.Drawing.Size(104, 49);
             this.button1.TabIndex = 1;
             this.button1.Text = "生产状态看板";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(657, 369);
+            this.button2.Location = new System.Drawing.Point(617, 369);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 52);
+            this.button2.Size = new System.Drawing.Size(110, 51);
             this.button2.TabIndex = 2;
             this.button2.Text = "生产质量监控界面";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(114, 375);
+            this.button3.Location = new System.Drawing.Point(227, 371);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(170, 45);
+            this.button3.Size = new System.Drawing.Size(123, 47);
             this.button3.TabIndex = 3;
             this.button3.Text = "编辑生产线";
             this.button3.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@ namespace 中铁流水线管理端
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(352, 374);
+            this.btnRefresh.Location = new System.Drawing.Point(367, 371);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(89, 32);
+            this.btnRefresh.Size = new System.Drawing.Size(107, 49);
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "刷新";
             this.btnRefresh.UseVisualStyleBackColor = true;

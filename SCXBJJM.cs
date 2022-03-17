@@ -22,8 +22,8 @@ namespace 中铁流水线管理端
         public SCXBJJM()
         {
             InitializeComponent();
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select SerialNumber AS '序号', ProductionLineNumber AS '生产线编号',Name AS '名称', ProductionWorkshop AS '生产车间', Time AS '时间', State AS '状态',Remarks AS '备注' from 生产线表 ";
@@ -50,8 +50,8 @@ namespace 中铁流水线管理端
         private void btnSave_Click(object sender, EventArgs e)
         {
             int k = 0;
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            SqlConnection sqlConnection = new SqlConnection(str);
+            //string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            SqlConnection sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             DataTable changeTable = dt.GetChanges();
@@ -115,8 +115,8 @@ namespace 中铁流水线管理端
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+            //string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select SerialNumber AS '序号', ProductionLineNumber AS '生产线编号',Name AS '名称', ProductionWorkshop AS '生产车间', Time AS '时间', State AS '状态',Remarks AS '备注' from 生产线总表 ";
@@ -158,8 +158,8 @@ namespace 中铁流水线管理端
                     flag8 = "(Inspector='" + txtJYRY.Text + "')and";
                 if (txtBZ.Text != "")
                     flag9 = "(Remarks='" + txtBZ.Text + "')and";
-                string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                SqlConnection sqlConnection = new SqlConnection(str);
+               // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                SqlConnection sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
                 strSQL6 = "select * from [dbo].[" + SCXJM.x.Trim() + "] where" + flag1 + flag2 + flag3 + flag4 + flag5 + flag6 + flag7 + flag8 + flag9;
