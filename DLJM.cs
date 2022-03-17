@@ -31,8 +31,8 @@ namespace 中铁流水线管理端
 
         private void button1_Click(object sender, EventArgs e)
         {
-           // strSQL = "select * from 人员信息表 where Name='"+txtName.Text+"'and Password='"+txtPassword.Text+"'";
-            SqlCommand order = new SqlCommand(PublicAnial.str, sqlConnection);
+            strSQL = "select * from 人员信息表 where Name='"+txtName.Text+"'and Password='"+txtPassword.Text+"'";
+            SqlCommand order = new SqlCommand(strSQL, sqlConnection);
             //参数一：SQL语句  ，参数二：连接对象
             //SqlDataAdapter对象用于获取到表格并填充到数据集
             SqlDataReader da =order.ExecuteReader();
