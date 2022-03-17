@@ -26,7 +26,9 @@ namespace 中铁流水线管理端
         SqlConnection sqlConnection;
         int count = 0;//生产进度
         int end = 0;//2为最后一道工序的标志,1为第一道工序
+        public int speedofprocess;//进度
         DataTable dt;
+        DateTime dd = DateTime.Now;
         public static GLYQXClass glyqxClass { get; set; } = new GLYQXClass();
         public static WorkerProcessClass workerProcessClass { get; set; } = new WorkerProcessClass();
         public GRJSJM()
@@ -156,10 +158,14 @@ namespace 中铁流水线管理端
                 SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }
-            else if(end==1)
+            else if(end == 1)
             {
-           
-
+                sqlConnection = new SqlConnection(PublicAnial.str);
+                if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                    sqlConnection.Open();
+                strSQL = "insert into 成品完成表 (ProductId,ProductName,FinishedProductID,Date)values('" + GRSCHJHSXZJM.workerProcessClass.ProductId + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','1','" + DateTime.Now + "') ";
+                SqlCommand order = new SqlCommand(strSQL, sqlConnection);
+                int count1 = order.ExecuteNonQuery();
             }
         }
 
