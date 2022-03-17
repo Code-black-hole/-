@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="IdentityClass.cs" />
     <Compile Include="identityClass\JobId.cs" />
+    <Compile Include="PublicAnial.cs" />
     <Compile Include="SCXBJJM.cs">
       <SubType>Form</SubType>
     </Compile>

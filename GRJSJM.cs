@@ -15,6 +15,7 @@ namespace 中铁流水线管理端
 {
     public partial class GRJSJM : Form
     {
+        string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
         System.DateTime TimeNow = new DateTime();//起始点
         System.DateTime TimeNow2 = new DateTime();//暂停点
         TimeSpan TimeCount = new TimeSpan();//单个工时
@@ -37,8 +38,8 @@ namespace 中铁流水线管理端
             this.btnStop.Enabled = false;
             this.btnOver.Enabled = false;
             labState.Text = "未开始";
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+            //string PublicAnial.str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select * from 工艺流程表 where ProductId='" + GRSCHJHSXZJM.workerProcessClass.ProductId + "'";
@@ -74,8 +75,8 @@ namespace 中铁流水线管理端
                 this.btnStop.Enabled = true;
                 this.btnOver.Enabled = true;
                  p = 1;
-            string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-            sqlConnection = new SqlConnection(str);
+            //string PublicAnial.PublicAnial.str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('"+DLJM.identityClass.JobId+"','"+ DLJM.identityClass.Name + "','"+DateTime.Now+"','开始','"+GRSCHJHSXZJM.workerProcessClass.ProductionLineId+"','"+ GRSCHJHSXZJM.workerProcessClass.ProcessId + "','"+count+"') ";
@@ -96,8 +97,8 @@ namespace 中铁流水线管理端
                     btnStop.Text = "继续";
                     flag = 1;
                     labState.Text = "暂停";
-                    string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
-                    sqlConnection = new SqlConnection(str);
+                    //string PublicAnial.str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+                    sqlConnection = new SqlConnection(PublicAnial.str);
                     if (sqlConnection.State == System.Data.ConnectionState.Closed)
                         sqlConnection.Open();
                     strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','暂停','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
