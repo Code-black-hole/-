@@ -74,6 +74,12 @@
     <Compile Include="IdentityClass.cs" />
     <Compile Include="identityClass\JobId.cs" />
     <Compile Include="PublicAnial.cs" />
+    <Compile Include="RKJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RKJM.Designer.cs">
+      <DependentUpon>RKJM.cs</DependentUpon>
+    </Compile>
     <Compile Include="SCXBJJM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GRSCHJHSXZJM.resx">
       <DependentUpon>GRSCHJHSXZJM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RKJM.resx">
+      <DependentUpon>RKJM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SCXBJJM.resx">
       <DependentUpon>SCXBJJM.cs</DependentUpon>

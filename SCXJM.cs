@@ -141,6 +141,12 @@ namespace 中铁流水线管理端
             dgvSCXJM.DataSource = dt.DefaultView;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RKJM S = new RKJM();
+                S.ShowDialog(); 
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             SCXBJJM v = new SCXBJJM();
