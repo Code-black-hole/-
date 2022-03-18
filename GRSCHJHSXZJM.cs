@@ -65,6 +65,7 @@ namespace 中铁流水线管理端
                 //参数一：SQL语句  ，参数二：连接对象
                 //SqlDataAdapter对象用于获取到表格并填充到数据集
                 SqlDataAdapter da = new SqlDataAdapter(strSQL, sqlConnection);
+            
                 //创建数据集对象
                 DataSet ds = new DataSet();
                 //用SqlDataAdapter对象的Fill方法填充数据集
@@ -104,7 +105,7 @@ namespace 中铁流水线管理端
                 workerProcessClass.ProductName = dt.Rows[0][4].ToString().Trim();
                 workerProcessClass.ProductId = dt1.Rows[0][0].ToString().Trim();
                 workerProcessClass.ProductionLineId = cbxXZSCX.Text.ToString().Trim();
-                workerProcessClass.ProcessId = cbxXZGX.Text.ToString().Trim();
+                workerProcessClass.ProcessName = cbxXZGX.Text.ToString().Trim();
                 GRJSJM s = new GRJSJM();
                 s.ShowDialog();
                 this.Close();

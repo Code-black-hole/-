@@ -15,7 +15,7 @@ namespace 中铁流水线管理端
         /// <summary>
         /// 工序名称
         /// </summary>
-        public string ProcessId { get; set; }
+        public string ProcessName { get; set; }
         /// <summary>
         /// 产品编号
         /// </summary>

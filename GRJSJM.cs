@@ -24,19 +24,19 @@ namespace 中铁流水线管理端
         public int p = 0;
         public static string strSQL, strSQL2;
         SqlConnection sqlConnection;
-        int count = 0;//生产进度
+        int count = 0;//该工人生产进度
         int end = 0;//2为最后一道工序的标志,1为第一道工序
-        public int speedofprocess;//进度
+      
         DataTable dt;
         DateTime dd = DateTime.Now;
         public static GLYQXClass glyqxClass { get; set; } = new GLYQXClass();
-        public static WorkerProcessClass workerProcessClass { get; set; } = new WorkerProcessClass();
+        
         public GRJSJM()
         {
             InitializeComponent();
             labName.Text = DLJM.identityClass.Name;
             labProductionLineId.Text = GRSCHJHSXZJM.workerProcessClass.ProductionLineId;
-            labProcessId.Text = GRSCHJHSXZJM.workerProcessClass.ProcessId;
+            labProcessId.Text = GRSCHJHSXZJM.workerProcessClass.ProcessName;
             this.btnStop.Enabled = false;
             this.btnOver.Enabled = false;
             labState.Text = "未开始";
@@ -46,26 +46,29 @@ namespace 中铁流水线管理端
             sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
-            strSQL = "select * from 工艺流程表 where ProductId='" + workerProcessClass.ProductId + "'";
-            SqlCommand order = new SqlCommand();
+            strSQL = "select * from 工艺流程表 where ProductId='" +GRSCHJHSXZJM.workerProcessClass.ProductId + "'";
+            SqlCommand order = new SqlCommand();           
             //参数一：SQL语句  ，参数二：连接对象
             //SqlDataAdapter对象用于获取到表格并填充到数据集
-            SqlDataAdapter da = new SqlDataAdapter(strSQL, sqlConnection);
+            SqlDataAdapter da = new SqlDataAdapter(strSQL, sqlConnection);           
             //创建数据集对象
             DataSet ds = new DataSet();
             //用SqlDataAdapter对象的Fill方法填充数据集
-            da.Fill(ds, "质量问题表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
+            da.Fill(ds, "工艺流程表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
                                  //绑定数据到DataGridView
-            dt = ds.Tables["质量问题表"];
+            dt = ds.Tables["工艺流程表"];
             int RowCount = dt.Rows.Count;
-            for(int i=0;i<RowCount;i++)//判定当前工序是否为最后一道工序
+            string f = dt.Rows[0][2].ToString().Trim();
+            for (int i=0;i<RowCount;i++)//判定当前工序是否为最后一道工序
             {
-                if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessId && dt.Rows[i][6].ToString() == RowCount.ToString())
+                if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessName && dt.Rows[i][6].ToString() == RowCount.ToString())
                 {
+                   
                     end = 2;
                 }
-                else if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessId && dt.Rows[i][6].ToString() == "1")
+                else if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessName && dt.Rows[i][6].ToString() == "1")
                 {
+                   
                     end = 1;
                 }
             }
@@ -89,7 +92,7 @@ namespace 中铁流水线管理端
             sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
-            strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('"+DLJM.identityClass.JobId+"','"+ DLJM.identityClass.Name + "','"+DateTime.Now+"','开始','"+GRSCHJHSXZJM.workerProcessClass.ProductionLineId+"','"+ GRSCHJHSXZJM.workerProcessClass.ProcessId + "','"+count+"') ";
+            strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('"+DLJM.identityClass.JobId+"','"+ DLJM.identityClass.Name + "','"+DateTime.Now+"','开始','"+GRSCHJHSXZJM.workerProcessClass.ProductionLineId+"','"+ GRSCHJHSXZJM.workerProcessClass.ProcessName + "','"+count+"') ";
             SqlCommand order = new SqlCommand(strSQL, sqlConnection);
             int count1 = order.ExecuteNonQuery();
         }
@@ -111,7 +114,7 @@ namespace 中铁流水线管理端
                     sqlConnection = new SqlConnection(PublicAnial.str);
                     if (sqlConnection.State == System.Data.ConnectionState.Closed)
                         sqlConnection.Open();
-                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','暂停','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
+                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','暂停','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessName + "','" + count + "') ";
                     SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                     int count1 = order.ExecuteNonQuery();
                 }
@@ -125,7 +128,7 @@ namespace 中铁流水线管理端
                     sqlConnection = new SqlConnection(PublicAnial.str);
                     if (sqlConnection.State == System.Data.ConnectionState.Closed)
                         sqlConnection.Open();
-                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessId,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','继续','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessId + "','" + count + "') ";
+                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','继续','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessName + "','" + count + "') ";
                     SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                     int count1 = order.ExecuteNonQuery();
                 }
@@ -150,21 +153,61 @@ namespace 中铁流水线管理端
             count++;
             if (end == 2)//如果当前为最后一道工序，结束后将自动在成品完成表中添加一个数据
             {
-               // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "insert into 成品完成表 (ProductId,ProductName,FinishedProductID,Date)values('" + GRSCHJHSXZJM.workerProcessClass.ProductId + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','1','" + DateTime.Now + "') ";
+                strSQL = "select * from 工艺流程表 where ProcessName='" + GRSCHJHSXZJM.workerProcessClass.ProcessName + "'";
+                SqlCommand order = new SqlCommand();
+                //参数一：SQL语句  ，参数二：连接对象
+                //SqlDataAdapter对象用于获取到表格并填充到数据集
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, sqlConnection);
+                //创建数据集对象
+                DataSet ds = new DataSet();
+                //用SqlDataAdapter对象的Fill方法填充数据集
+                da.Fill(ds, "工艺流程表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
+                                     //绑定数据到DataGridView
+                dt = ds.Tables["工艺流程表"];
+                //根据工艺流程表的工艺顺序序号，改变当前成品的进度
+                sqlConnection = new SqlConnection(PublicAnial.str);
+                if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                    sqlConnection.Open();
+                strSQL = "update 成品完成表 set SpeedOfProgress='" + dt.Rows[0][6] + "',Date='"+DateTime.Now+"'where SerialId='" + count + "' ";
+                order = new SqlCommand(strSQL, sqlConnection);
+                int count1 = order.ExecuteNonQuery();
+            }
+            else if(end == 1)//如果当前为第一道工序
+            {
+               
+                sqlConnection = new SqlConnection(PublicAnial.str);
+                if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                    sqlConnection.Open();
+                strSQL = "insert into 成品完成表 (ProductId,ProductName,FormId,WareHousingStatus,SpeedOfProgress,SerialId)values('" + GRSCHJHSXZJM.workerProcessClass.ProductId + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','未入库','1','" + count + "') ";
                 SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }
-            else if(end == 1)
+            else
             {
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "insert into 成品完成表 (ProductId,ProductName,FinishedProductID,Date)values('" + GRSCHJHSXZJM.workerProcessClass.ProductId + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','1','" + DateTime.Now + "') ";
-                SqlCommand order = new SqlCommand(strSQL, sqlConnection);
+                strSQL = "select * from 工艺流程表 where ProcessId='"+ GRSCHJHSXZJM.workerProcessClass.ProcessName+"'";
+                SqlCommand order = new SqlCommand();
+                //参数一：SQL语句  ，参数二：连接对象
+                //SqlDataAdapter对象用于获取到表格并填充到数据集
+                SqlDataAdapter da = new SqlDataAdapter(strSQL, sqlConnection);
+                //创建数据集对象
+                DataSet ds = new DataSet();
+                //用SqlDataAdapter对象的Fill方法填充数据集
+                da.Fill(ds, "工艺流程表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
+                                    //绑定数据到DataGridView
+                dt = ds.Tables["工艺流程表"];
+                //根据工艺流程表的工艺顺序序号，改变当前成品的进度
+                sqlConnection = new SqlConnection(PublicAnial.str);
+                if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                    sqlConnection.Open();
+                strSQL = "update 成品完成表 set SpeedOfProgress='"+dt.Rows[0][6]+ "'where SerialId='"+count+"' ";
+                 order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }
         }
