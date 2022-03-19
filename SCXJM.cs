@@ -154,6 +154,12 @@ namespace 中铁流水线管理端
             S.ShowDialog();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+           ZTKB S = new ZTKB();
+            S.ShowDialog();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             SCXBJJM v = new SCXBJJM();
