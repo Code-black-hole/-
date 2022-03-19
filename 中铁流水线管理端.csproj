@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CKJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CKJM.Designer.cs">
+      <DependentUpon>CKJM.cs</DependentUpon>
+    </Compile>
     <Compile Include="DLJM.cs">
       <SubType>Form</SubType>
     </Compile>

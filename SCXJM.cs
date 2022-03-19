@@ -147,6 +147,13 @@ namespace 中铁流水线管理端
                 S.ShowDialog(); 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            CKJM S = new CKJM();
+            S.ShowDialog();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             SCXBJJM v = new SCXBJJM();
