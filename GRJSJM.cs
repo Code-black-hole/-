@@ -35,8 +35,8 @@ namespace 中铁流水线管理端
         {
             InitializeComponent();
             labName.Text = DLJM.identityClass.Name;
-            labProductionLineId.Text = GRSCHJHSXZJM.workerProcessClass.ProductionLineId;
-            labProcessId.Text = GRSCHJHSXZJM.workerProcessClass.ProcessName;
+            labProductionLineId.Text = DLJM.workerProcessClass.ProductionLineId;
+            labProcessId.Text = DLJM.workerProcessClass.ProcessName;
             this.btnStop.Enabled = false;
             this.btnOver.Enabled = false;
             labState.Text = "未开始";
@@ -46,7 +46,7 @@ namespace 中铁流水线管理端
             sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
-            strSQL = "select * from 工艺流程表 where ProductId='" +GRSCHJHSXZJM.workerProcessClass.ProductId + "'";
+            strSQL = "select * from 工艺流程表 where ProductId='" +DLJM.workerProcessClass.ProductId + "'";
             SqlCommand order = new SqlCommand();           
             //参数一：SQL语句  ，参数二：连接对象
             //SqlDataAdapter对象用于获取到表格并填充到数据集
@@ -61,12 +61,12 @@ namespace 中铁流水线管理端
             string f = dt.Rows[0][2].ToString().Trim();
             for (int i=0;i<RowCount;i++)//判定当前工序是否为最后一道工序
             {
-                if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessName && dt.Rows[i][6].ToString() == RowCount.ToString())
+                if (dt.Rows[i][2].ToString().Trim() == DLJM.workerProcessClass.ProcessName && dt.Rows[i][6].ToString() == RowCount.ToString())
                 {
                    
                     end = 2;
                 }
-                else if (dt.Rows[i][2].ToString().Trim() == GRSCHJHSXZJM.workerProcessClass.ProcessName && dt.Rows[i][6].ToString() == "1")
+                else if (dt.Rows[i][2].ToString().Trim() == DLJM.workerProcessClass.ProcessName && dt.Rows[i][6].ToString() == "1")
                 {
                    
                     end = 1;
@@ -92,7 +92,7 @@ namespace 中铁流水线管理端
             sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
-            strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('"+DLJM.identityClass.JobId+"','"+ DLJM.identityClass.Name + "','"+DateTime.Now+"','开始','"+GRSCHJHSXZJM.workerProcessClass.ProductionLineId+"','"+ GRSCHJHSXZJM.workerProcessClass.ProcessName + "','"+count+"') ";
+            strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('"+DLJM.identityClass.JobId+"','"+ DLJM.identityClass.Name + "','"+DateTime.Now+"','开始','"+ DLJM.workerProcessClass.ProductionLineId+"','"+ DLJM.workerProcessClass.ProcessName + "','"+count+"') ";
             SqlCommand order = new SqlCommand(strSQL, sqlConnection);
             int count1 = order.ExecuteNonQuery();
         }
@@ -114,7 +114,7 @@ namespace 中铁流水线管理端
                     sqlConnection = new SqlConnection(PublicAnial.str);
                     if (sqlConnection.State == System.Data.ConnectionState.Closed)
                         sqlConnection.Open();
-                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','暂停','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessName + "','" + count + "') ";
+                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','暂停','" + DLJM.workerProcessClass.ProductionLineId + "','" + DLJM.workerProcessClass.ProcessName + "','" + count + "') ";
                     SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                     int count1 = order.ExecuteNonQuery();
                 }
@@ -128,7 +128,7 @@ namespace 中铁流水线管理端
                     sqlConnection = new SqlConnection(PublicAnial.str);
                     if (sqlConnection.State == System.Data.ConnectionState.Closed)
                         sqlConnection.Open();
-                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','继续','" + GRSCHJHSXZJM.workerProcessClass.ProductionLineId + "','" + GRSCHJHSXZJM.workerProcessClass.ProcessName + "','" + count + "') ";
+                    strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','继续','" + DLJM.workerProcessClass.ProductionLineId + "','" + DLJM.workerProcessClass.ProcessName + "','" + count + "') ";
                     SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                     int count1 = order.ExecuteNonQuery();
                 }
@@ -157,7 +157,7 @@ namespace 中铁流水线管理端
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "select * from 工艺流程表 where ProcessName='" + GRSCHJHSXZJM.workerProcessClass.ProcessName + "'";
+                strSQL = "select * from 工艺流程表 where ProcessName='" + DLJM.workerProcessClass.ProcessName + "'";
                 SqlCommand order = new SqlCommand();
                 //参数一：SQL语句  ，参数二：连接对象
                 //SqlDataAdapter对象用于获取到表格并填充到数据集
@@ -172,7 +172,7 @@ namespace 中铁流水线管理端
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "update 成品完成表 set SpeedOfProgress='" + dt.Rows[0][6] + "',Date='"+DateTime.Now+"'where SerialId='" + count + "' ";
+                strSQL = "update 成品完成表 set SpeedOfProgress='" + dt.Rows[0][6] + "',Date='"+DateTime.Now+"',where SerialId='" + count + "' and WareHousingStatus='未入库' ";
                 order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }
@@ -182,7 +182,7 @@ namespace 中铁流水线管理端
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "insert into 成品完成表 (ProductId,ProductName,FormId,WareHousingStatus,SpeedOfProgress,SerialId)values('" + GRSCHJHSXZJM.workerProcessClass.ProductId + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','" + GRSCHJHSXZJM.workerProcessClass.ProductName + "','未入库','1','" + count + "') ";
+                strSQL = "insert into 成品完成表 (ProductId,ProductName,FormId,WareHousingStatus,SpeedOfProgress,SerialId)values('" + DLJM.workerProcessClass.ProductId + "','" + DLJM.workerProcessClass.ProductName + "','" + DLJM.workerProcessClass.ProductName + "','未入库','1','" + count + "') ";
                 SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }
@@ -191,7 +191,7 @@ namespace 中铁流水线管理端
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "select * from 工艺流程表 where ProcessId='"+ GRSCHJHSXZJM.workerProcessClass.ProcessName+"'";
+                strSQL = "select * from 工艺流程表 where ProcessName='"+ DLJM.workerProcessClass.ProcessName+"'";
                 SqlCommand order = new SqlCommand();
                 //参数一：SQL语句  ，参数二：连接对象
                 //SqlDataAdapter对象用于获取到表格并填充到数据集
@@ -206,7 +206,7 @@ namespace 中铁流水线管理端
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "update 成品完成表 set SpeedOfProgress='"+dt.Rows[0][6]+ "'where SerialId='"+count+"' ";
+                strSQL = "update 成品完成表 set SpeedOfProgress='"+dt.Rows[0][6]+ "'where SerialId='"+count+ "'and  WareHousingStatus='未入库'";
                  order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }

@@ -19,6 +19,7 @@ namespace 中铁流水线管理端
         SqlConnection sqlConnection;
         DataTable dt;
         public static IdentityClass identityClass { get; set; } = new IdentityClass();
+        public static WorkerProcessClass workerProcessClass { get; set; } = new WorkerProcessClass();
         public DLJM()
         {
             InitializeComponent();
@@ -63,7 +64,40 @@ namespace 中铁流水线管理端
                             identityClass.Identity = da.GetValue(2).ToString().Trim();
                             identityClass.Password = da.GetValue(3).ToString().Trim();
                             identityClass.State = da.GetValue(4).ToString().Trim();
-                            GRSCHJHSXZJM s = new GRSCHJHSXZJM();
+                            sqlConnection = new SqlConnection(PublicAnial.str);
+                            if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                                sqlConnection.Open();
+                            strSQL = "select * from 工艺流程表 where ProcessingPersonnel='"+ identityClass.Name + "' ";
+                           order = new SqlCommand();
+                            //参数一：SQL语句  ，参数二：连接对象
+                            //SqlDataAdapter对象用于获取到表格并填充到数据集
+                            SqlDataAdapter da1 = new SqlDataAdapter(strSQL, sqlConnection);
+                            //创建数据集对象
+                            DataSet ds = new DataSet();
+                            //用SqlDataAdapter对象的Fill方法填充数据集
+                            da1.Fill(ds, "工艺流程表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
+                                                 //绑定数据到DataGridView
+                            dt = ds.Tables["工艺流程表"];
+                            workerProcessClass.ProductId = dt.Rows[0][0].ToString().Trim();
+                            workerProcessClass.ProcessName = dt.Rows[0][2].ToString().Trim();
+
+                            sqlConnection = new SqlConnection(PublicAnial.str);
+                            if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                                sqlConnection.Open();
+                            strSQL = "select * from 生产线表 where ProductId='" + workerProcessClass.ProductId + "' ";
+                            order = new SqlCommand();
+                            //参数一：SQL语句  ，参数二：连接对象
+                            //SqlDataAdapter对象用于获取到表格并填充到数据集
+                             da1 = new SqlDataAdapter(strSQL, sqlConnection);
+                            //创建数据集对象
+                             ds = new DataSet();
+                            //用SqlDataAdapter对象的Fill方法填充数据集
+                            da1.Fill(ds, "生产线表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
+                                                  //绑定数据到DataGridView
+                            dt = ds.Tables["生产线表"];
+                            workerProcessClass.ProductName = dt.Rows[0][4].ToString().Trim();
+                            workerProcessClass.ProductionLineId = dt.Rows[0][0].ToString().Trim();
+                           GRJSJM s = new GRJSJM();
                             s.ShowDialog();
                             this.Hide();
                         }
