@@ -182,7 +182,7 @@ namespace 中铁流水线管理端
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "insert into 成品完成表 (ProductId,ProductName,FormId,SpeedOfProgress,SerialId)values('" + DLJM.workerProcessClass.ProductId + "','" + DLJM.workerProcessClass.ProductName + "','" + DLJM.workerProcessClass.ProductName + "','1','" + count + "') ";
+                strSQL = "insert into 成品完成表 (ProductId,ProductName,FormId,WareHousingStatus,SpeedOfProgress,SerialId)values('" + DLJM.workerProcessClass.ProductId + "','" + DLJM.workerProcessClass.ProductName + "','" + DLJM.workerProcessClass.ProductName + "','0','1','" + count + "') ";
                 SqlCommand order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }
@@ -206,7 +206,7 @@ namespace 中铁流水线管理端
                 sqlConnection = new SqlConnection(PublicAnial.str);
                 if (sqlConnection.State == System.Data.ConnectionState.Closed)
                     sqlConnection.Open();
-                strSQL = "update 成品完成表 set SpeedOfProgress='"+dt.Rows[0][6]+ "'where SerialId='"+count+ "'and  WareHousingStatus='未入库'";
+                strSQL = "update 成品完成表 set SpeedOfProgress='"+dt.Rows[0][6]+ "'where SerialId='"+count+ "'and  WareHousingStatus='0'";
                  order = new SqlCommand(strSQL, sqlConnection);
                 int count1 = order.ExecuteNonQuery();
             }

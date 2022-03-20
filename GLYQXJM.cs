@@ -21,7 +21,7 @@ namespace 中铁流水线管理端
         private void button1_Click(object sender, EventArgs e)
         {
             //strSQL = "select * from 人员信息表 where Name='" + txtName.Text + "'and Password='" + txtPassword.Text + "'";
-            SqlCommand order = new SqlCommand(PublicAnial.str, sqlConnection);
+            SqlCommand order = new SqlCommand("select * from 人员信息表 where Name='" + txtName.Text + "'and Password='" + txtPassword.Text + "'", sqlConnection);
             int count1 = order.ExecuteNonQuery();
             SqlDataReader da = order.ExecuteReader();
             if (da.HasRows)//满足用户名密码与数据库相匹配
