@@ -74,7 +74,7 @@ namespace 中铁流水线管理端
                         {
                             k = 1;
                             strSQL7= @"insert into [dbo].[生产线表] (ProductionLineId,ProductionLineName,ProductionWorkshop,ProductId,ProductName,Time,State,Memo) " +
-                                "values ('" + dr["生产线编号"].ToString().Trim() + @"','" + dr["生产线名称"].ToString().Trim() + @"','" + dr["生产车间"].ToString().Trim() + @"','" + dr["产品编号"].ToString().Trim() + @"','" + dr["产品名称"].ToString().Trim() + @"','"+dr["时间"].ToString().Trim()+"''" + dr["状态"].ToString().Trim() + @"','" + dr["备注"].ToString().Trim() + @"')";
+                                "values ('" + dr["生产线编号"].ToString().Trim() + @"','" + dr["生产线名称"].ToString().Trim() + @"','" + dr["生产车间"].ToString().Trim() + @"','" + dr["产品编号"].ToString().Trim() + @"','" + dr["产品名称"].ToString().Trim() + @"','"+dr["时间"].ToString().Trim()+"','开启','" + dr["备注"].ToString().Trim() + @"')";
                             //'"+dr["此字段名为datagrideview里的字段名而非sql sever数据库中的"].ToString()+"'
 
                         }
