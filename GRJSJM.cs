@@ -151,6 +151,13 @@ namespace 中铁流水线管理端
             AllTimeCount += TimeCount;
             labTotaltime.Text = AllTimeCount.ToString();
             count++;
+            //将结束操作填入工时表
+            sqlConnection = new SqlConnection(PublicAnial.str);
+            if (sqlConnection.State == System.Data.ConnectionState.Closed)
+                sqlConnection.Open();
+            strSQL = "insert into 工时表 (JobId,Name,Date,Operation,ProductionLineId,ProcessName,SpeedOfProgress)values('" + DLJM.identityClass.JobId + "','" + DLJM.identityClass.Name + "','" + DateTime.Now + "','结束','" + DLJM.workerProcessClass.ProductionLineId + "','" + DLJM.workerProcessClass.ProcessName + "','" + count + "') ";
+            SqlCommand order1 = new SqlCommand(strSQL, sqlConnection);
+            int count2 = order1.ExecuteNonQuery();
             if (end == 2)//如果当前为最后一道工序，结束后将自动在成品完成表中添加一个数据
             {
 

@@ -53,7 +53,7 @@ namespace 中铁流水线管理端
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(0, 46);
+            this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
             this.label1.TabIndex = 0;
@@ -62,7 +62,7 @@ namespace 中铁流水线管理端
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(0, 88);
+            this.label2.Location = new System.Drawing.Point(3, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 23);
             this.label2.TabIndex = 1;
@@ -71,7 +71,7 @@ namespace 中铁流水线管理端
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(217, 46);
+            this.label3.Location = new System.Drawing.Point(220, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 23);
             this.label3.TabIndex = 2;
@@ -80,7 +80,7 @@ namespace 中铁流水线管理端
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(420, 89);
+            this.label6.Location = new System.Drawing.Point(423, 52);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 23);
             this.label6.TabIndex = 5;
@@ -90,7 +90,7 @@ namespace 中铁流水线管理端
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(603, 46);
+            this.label7.Location = new System.Drawing.Point(606, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(105, 23);
             this.label7.TabIndex = 6;
@@ -99,7 +99,7 @@ namespace 中铁流水线管理端
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(217, 88);
+            this.label8.Location = new System.Drawing.Point(216, 49);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(109, 23);
             this.label8.TabIndex = 7;
@@ -109,7 +109,7 @@ namespace 中铁流水线管理端
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(412, 46);
+            this.label9.Location = new System.Drawing.Point(415, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 23);
             this.label9.TabIndex = 8;
@@ -117,56 +117,56 @@ namespace 中铁流水线管理端
             // 
             // txtXCPBH
             // 
-            this.txtXCPBH.Location = new System.Drawing.Point(92, 46);
+            this.txtXCPBH.Location = new System.Drawing.Point(95, 9);
             this.txtXCPBH.Name = "txtXCPBH";
             this.txtXCPBH.Size = new System.Drawing.Size(100, 21);
             this.txtXCPBH.TabIndex = 9;
             // 
             // txtGXBH
             // 
-            this.txtGXBH.Location = new System.Drawing.Point(306, 46);
+            this.txtGXBH.Location = new System.Drawing.Point(309, 9);
             this.txtGXBH.Name = "txtGXBH";
             this.txtGXBH.Size = new System.Drawing.Size(100, 21);
             this.txtGXBH.TabIndex = 10;
             // 
             // txtGXMC
             // 
-            this.txtGXMC.Location = new System.Drawing.Point(497, 46);
+            this.txtGXMC.Location = new System.Drawing.Point(500, 9);
             this.txtGXMC.Name = "txtGXMC";
             this.txtGXMC.Size = new System.Drawing.Size(100, 21);
             this.txtGXMC.TabIndex = 11;
             // 
             // txtGZDY
             // 
-            this.txtGZDY.Location = new System.Drawing.Point(688, 46);
+            this.txtGZDY.Location = new System.Drawing.Point(688, 12);
             this.txtGZDY.Name = "txtGZDY";
             this.txtGZDY.Size = new System.Drawing.Size(100, 21);
             this.txtGZDY.TabIndex = 12;
             // 
             // txtJGRY
             // 
-            this.txtJGRY.Location = new System.Drawing.Point(92, 92);
+            this.txtJGRY.Location = new System.Drawing.Point(95, 55);
             this.txtJGRY.Name = "txtJGRY";
             this.txtJGRY.Size = new System.Drawing.Size(100, 21);
             this.txtJGRY.TabIndex = 14;
             // 
             // txtJGSJ
             // 
-            this.txtJGSJ.Location = new System.Drawing.Point(306, 89);
+            this.txtJGSJ.Location = new System.Drawing.Point(309, 51);
             this.txtJGSJ.Name = "txtJGSJ";
             this.txtJGSJ.Size = new System.Drawing.Size(100, 21);
             this.txtJGSJ.TabIndex = 15;
             // 
             // txtJYRY
             // 
-            this.txtJYRY.Location = new System.Drawing.Point(536, 89);
+            this.txtJYRY.Location = new System.Drawing.Point(539, 52);
             this.txtJYRY.Name = "txtJYRY";
             this.txtJYRY.Size = new System.Drawing.Size(100, 21);
             this.txtJYRY.TabIndex = 16;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(282, 139);
+            this.btnFind.Location = new System.Drawing.Point(688, 89);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(88, 43);
             this.btnFind.TabIndex = 18;
@@ -177,17 +177,17 @@ namespace 中铁流水线管理端
             // dgvSCXGYLUJM
             // 
             this.dgvSCXGYLUJM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSCXGYLUJM.Location = new System.Drawing.Point(37, 210);
+            this.dgvSCXGYLUJM.Location = new System.Drawing.Point(12, 89);
             this.dgvSCXGYLUJM.Name = "dgvSCXGYLUJM";
             this.dgvSCXGYLUJM.RowTemplate.Height = 23;
-            this.dgvSCXGYLUJM.Size = new System.Drawing.Size(634, 208);
+            this.dgvSCXGYLUJM.Size = new System.Drawing.Size(653, 349);
             this.dgvSCXGYLUJM.TabIndex = 21;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(697, 227);
+            this.btnSave.Location = new System.Drawing.Point(688, 189);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 79);
+            this.btnSave.Size = new System.Drawing.Size(88, 49);
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -195,9 +195,9 @@ namespace 中铁流水线管理端
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(455, 139);
+            this.button1.Location = new System.Drawing.Point(688, 138);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 43);
+            this.button1.Size = new System.Drawing.Size(88, 45);
             this.button1.TabIndex = 23;
             this.button1.Text = "显示全部";
             this.button1.UseVisualStyleBackColor = true;

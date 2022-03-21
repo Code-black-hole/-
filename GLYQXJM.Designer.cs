@@ -65,6 +65,7 @@ namespace 中铁流水线管理端
             // 
             this.txtPassword.Location = new System.Drawing.Point(131, 92);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(129, 21);
             this.txtPassword.TabIndex = 3;
             // 

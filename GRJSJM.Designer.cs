@@ -247,7 +247,7 @@ namespace 中铁流水线管理端
             this.Controls.Add(this.labProductionLineId);
             this.Controls.Add(this.label1);
             this.Name = "GRJSJM";
-            this.Text = "工人计时界面";
+            this.Text = "计时界面";
             this.ResumeLayout(false);
             this.PerformLayout();
 
