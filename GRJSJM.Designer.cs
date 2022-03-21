@@ -248,6 +248,7 @@ namespace 中铁流水线管理端
             this.Controls.Add(this.label1);
             this.Name = "GRJSJM";
             this.Text = "计时界面";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GRJSJM_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

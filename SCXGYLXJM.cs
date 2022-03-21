@@ -14,14 +14,15 @@ namespace 中铁流水线管理端
 {
     public partial class SCXGYLXJM : Form
     {
-       public static string strSQL2 = SCXJM.strSQL1;
+       
         
         SqlConnection sqlConnection;
         DataTable dt;
         public SCXGYLXJM()
         {
             InitializeComponent();
-           // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
+            string strSQL2 = SCXJM.flagClass.strSQL;
+            // string str = "server=.;uid=sa;pwd=duyuhaoend111;database=中铁生产线人员信息;MultipleActiveResultSets=true";
             sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
@@ -91,6 +92,11 @@ namespace 中铁流水线管理端
             {
                 return false;
             }
+        }
+
+        private void SCXGYLXJM_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

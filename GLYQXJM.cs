@@ -37,17 +37,19 @@ namespace 中铁流水线管理端
                             this.Close();
 
                         }
-                        else//显示工人界面
+                        else
                         {
                             MessageBox.Show("权限有误！");
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("登录失败！");
-
-                    }
+                    
                 }
+              
+            }
+            else
+            {
+                MessageBox.Show("登录失败！");
+
             }
         }
 

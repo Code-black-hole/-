@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using 中铁流水线管理端.Class;
+
 namespace 中铁流水线管理端
 {
     public partial class SCXJM : Form
@@ -17,6 +19,8 @@ namespace 中铁流水线管理端
         public static string strSQL;
         SqlConnection sqlConnection;
         DataTable dt;
+        DataBaseAccess dba = new DataBaseAccess();
+       public static FlagClass flagClass = new FlagClass();
         public SCXJM()
         {
             InitializeComponent();
@@ -25,16 +29,8 @@ namespace 中铁流水线管理端
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select ProductionLineId AS '生产线编号',ProductionLineName AS '生产线名称', ProductionWorkshop AS '生产车间',ProductId as '产品编号',ProductName as '产品名称',Time AS '时间', State AS '状态',Memo AS '备注' from 生产线表 ";
-            SqlCommand order = new SqlCommand();
-            //参数一：SQL语句  ，参数二：连接对象
-            //SqlDataAdapter对象用于获取到表格并填充到数据集
-            SqlDataAdapter da = new SqlDataAdapter(strSQL, sqlConnection);
-            //创建数据集对象
-            DataSet ds = new DataSet();
-            //用SqlDataAdapter对象的Fill方法填充数据集
-            da.Fill(ds, "生产线表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
-                              //绑定数据到DataGridView
-            dt = ds.Tables["生产线表"];
+           
+            dt = dba.Fill(strSQL, sqlConnection);
             dgvSCXJM.DataSource = dt.DefaultView;
         }
        public static string x,strSQL1;
@@ -65,7 +61,7 @@ namespace 中铁流水线管理端
             int j = this.dgvSCXJM.CurrentRow.Index;
             ProductionLineName= dgvSCXJM.Rows[j].Cells[1].Value.ToString().Trim();
             x = dgvSCXJM.Rows[j].Cells[3].Value.ToString().Trim();
-            strSQL1 = "select ProductId as'产品编号',ProcessId as'工序编号',ProcessName as'工序名称',WorkUnit as'工作单元',ProcessingTime as'加工时间',ProcessingPersonnel as'加工人员',SortId as '工序顺序序号' from 工艺流程表 where ProductId = '" + x + "'".Trim();
+             flagClass.strSQL= "select ProductId as'产品编号',ProcessId as'工序编号',ProcessName as'工序名称',WorkUnit as'工作单元',ProcessingTime as'加工时间',ProcessingPersonnel as'加工人员',SortId as '工序顺序序号' from 工艺流程表 where ProductId = '" + x + "'".Trim();
             SCXGYLXJM s = new SCXGYLXJM();
             s.ShowDialog();
             
@@ -87,20 +83,17 @@ namespace 中铁流水线管理端
                 {
                     //删除表中除生产线编号和状态外的其他信息
                     strSQL = "update 生产线表 set ProductionLineName=null , ProductionWorkshop=null , ProductId=null , ProductName=null , Memo=null where ProductionLineId='" + l + "' ";
-                    SqlCommand order = new SqlCommand(strSQL, sqlConnection);
-                    int count = order.ExecuteNonQuery();
+                  dba.Implement(strSQL);
+                
                     //转换该生产线状态列
                     strSQL = "update 生产线表 set State = '关闭' where ProductionLineId = '"+ dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "'";
-                     order = new SqlCommand(strSQL, sqlConnection);
-                     count = order.ExecuteNonQuery();
+                    dba.Implement(strSQL);
                     //删除对应工序中的加工人员
                     strSQL = "update 工艺流程表 set ProcessingPersonnel=null";
-                    order = new SqlCommand(strSQL, sqlConnection);
-                    count = order.ExecuteNonQuery();
+                    dba.Implement(strSQL);
                     //将该操作录入生产线状态表
-                     strSQL = "insert into 生产线状态表 (ProductionLineId,State,OperationDate,Operator) values('"+ dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "','关闭','"+DateTime.Now+"','"+DLJM.identityClass.Name+"')";
-                    order = new SqlCommand(strSQL, sqlConnection);
-                    int count1 = order.ExecuteNonQuery();
+                    strSQL = "insert into 生产线状态表 (ProductionLineId,State,OperationDate,Operator) values('"+ dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "','关闭','"+DateTime.Now+"','"+DLJM.identityClass.Name+"')";
+                    dba.Implement(strSQL);
                 }
             }
             else
@@ -109,12 +102,10 @@ namespace 中铁流水线管理端
                 {
                     
                     strSQL = "update 生产线表 set State = '开启' where ProductionLineId = '" + dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "'";
-                    SqlCommand order = new SqlCommand(strSQL, sqlConnection);
-                    int count = order.ExecuteNonQuery();
-                   
+                    dba.Implement(strSQL);
+
                     strSQL = "insert into 生产线状态表 (ProductionLineId,State,OperationDate,Operator) values('" + dgvSCXJM.Rows[j].Cells[0].Value.ToString().Trim() + "','开启','" + DateTime.Now + "','" + DLJM.identityClass.Name + "')";
-                    order = new SqlCommand(strSQL, sqlConnection);
-                    int count1 = order.ExecuteNonQuery();
+                    dba.Implement(strSQL);
                     SCXKQJM s = new SCXKQJM();
                     s.ShowDialog();
                 }
@@ -128,16 +119,8 @@ namespace 中铁流水线管理端
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
             strSQL = "select ProductionLineId AS '生产线编号',ProductionLineName AS '生产线名称', ProductionWorkshop AS '生产车间',ProductId as '产品编号',ProductName as '产品名称',Time AS '时间', State AS '状态',Memo AS '备注' from 生产线表 ";
-            SqlCommand order = new SqlCommand();
-            //参数一：SQL语句  ，参数二：连接对象
-            //SqlDataAdapter对象用于获取到表格并填充到数据集
-            SqlDataAdapter da = new SqlDataAdapter(strSQL, sqlConnection);
-            //创建数据集对象
-            DataSet ds = new DataSet();
-            //用SqlDataAdapter对象的Fill方法填充数据集
-            da.Fill(ds, "生产线表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
-                                //绑定数据到DataGridView
-            dt = ds.Tables["生产线表"];
+           
+            dt = dba.Fill(strSQL,sqlConnection);
             dgvSCXJM.DataSource = dt.DefaultView;
         }
 

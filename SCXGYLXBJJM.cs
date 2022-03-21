@@ -18,7 +18,7 @@ namespace 中铁流水线管理端
     {
        
         DataTable dt;
-        string strSQL2 = SCXGYLXJM.strSQL2;
+        string strSQL2 =SCXJM.flagClass.strSQL;
         string strSQL3,strSQL4,strSQL5;
         public SCXGYLXBJJM()
         {

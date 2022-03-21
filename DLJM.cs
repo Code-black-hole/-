@@ -10,14 +10,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using 中铁流水线管理端.Class;
 
 namespace 中铁流水线管理端
 {
     public partial class DLJM : Form
     {
         public static string strSQL;
-        SqlConnection sqlConnection;
+        static SqlConnection sqlConnection;
         DataTable dt;
+
+        DataBaseAccess dba = new DataBaseAccess();
         public static IdentityClass identityClass { get; set; } = new IdentityClass();
         public static WorkerProcessClass workerProcessClass { get; set; } = new WorkerProcessClass();
         public DLJM()
@@ -27,18 +30,16 @@ namespace 中铁流水线管理端
             sqlConnection = new SqlConnection(PublicAnial.str);
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                 sqlConnection.Open();
-            
+
+            sqlConnection = DataBaseAccess.FormInit();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            strSQL = "select * from 人员信息表 where Name='"+txtName.Text+"'and Password='"+txtPassword.Text+"'";
-            SqlCommand order = new SqlCommand(strSQL, sqlConnection);
-            //参数一：SQL语句  ，参数二：连接对象
-            //SqlDataAdapter对象用于获取到表格并填充到数据集
-            SqlDataReader da =order.ExecuteReader();
+            strSQL = "select * from 人员信息表 where Name='" + txtName.Text + "'and Password='" + txtPassword.Text + "'";
+            SqlDataReader da = dba.Read(strSQL, sqlConnection);
 
-            
             if (da.HasRows)//满足用户名密码与数据库相匹配
             {
                 if (da.Read())
@@ -67,17 +68,9 @@ namespace 中铁流水线管理端
                             sqlConnection = new SqlConnection(PublicAnial.str);
                             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                                 sqlConnection.Open();
-                            strSQL = "select * from 工艺流程表 where ProcessingPersonnel='"+ identityClass.Name + "' ";
-                           order = new SqlCommand();
-                            //参数一：SQL语句  ，参数二：连接对象
-                            //SqlDataAdapter对象用于获取到表格并填充到数据集
-                            SqlDataAdapter da1 = new SqlDataAdapter(strSQL, sqlConnection);
-                            //创建数据集对象
-                            DataSet ds = new DataSet();
-                            //用SqlDataAdapter对象的Fill方法填充数据集
-                            da1.Fill(ds, "工艺流程表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
-                                                 //绑定数据到DataGridView
-                            dt = ds.Tables["工艺流程表"];
+                            strSQL = "select * from 工艺流程表 where ProcessingPersonnel='" + identityClass.Name + "' ";
+
+                            dt = dba.Fill(strSQL, sqlConnection);
                             workerProcessClass.ProductId = dt.Rows[0][0].ToString().Trim();
                             workerProcessClass.ProcessName = dt.Rows[0][2].ToString().Trim();
 
@@ -85,19 +78,11 @@ namespace 中铁流水线管理端
                             if (sqlConnection.State == System.Data.ConnectionState.Closed)
                                 sqlConnection.Open();
                             strSQL = "select * from 生产线表 where ProductId='" + workerProcessClass.ProductId + "' ";
-                            order = new SqlCommand();
-                            //参数一：SQL语句  ，参数二：连接对象
-                            //SqlDataAdapter对象用于获取到表格并填充到数据集
-                             da1 = new SqlDataAdapter(strSQL, sqlConnection);
-                            //创建数据集对象
-                             ds = new DataSet();
-                            //用SqlDataAdapter对象的Fill方法填充数据集
-                            da1.Fill(ds, "生产线表");//参数1：DataSet对象 参数2：表名（不需要和查询的表名一致）
-                                                  //绑定数据到DataGridView
-                            dt = ds.Tables["生产线表"];
+
+                            dt = dba.Fill(strSQL, sqlConnection);
                             workerProcessClass.ProductName = dt.Rows[0][4].ToString().Trim();
                             workerProcessClass.ProductionLineId = dt.Rows[0][0].ToString().Trim();
-                           GRJSJM s = new GRJSJM();
+                            GRJSJM s = new GRJSJM();
                             s.ShowDialog();
                             this.Hide();
                         }
@@ -112,8 +97,13 @@ namespace 中铁流水线管理端
             else
             {
                 MessageBox.Show("登录失败！");
-                
+
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

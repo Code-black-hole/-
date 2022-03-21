@@ -71,9 +71,9 @@ namespace 中铁流水线管理端
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(367, 371);
+            this.btnRefresh.Location = new System.Drawing.Point(418, 2);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(107, 49);
+            this.btnRefresh.Size = new System.Drawing.Size(88, 27);
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "刷新";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@ namespace 中铁流水线管理端
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(797, 378);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnRefresh);

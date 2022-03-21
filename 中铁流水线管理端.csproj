@@ -108,12 +108,14 @@
     <Compile Include="CKJM.Designer.cs">
       <DependentUpon>CKJM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class\DataBaseAccess.cs" />
     <Compile Include="DLJM.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DLJM.Designer.cs">
       <DependentUpon>DLJM.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlagClass.cs" />
     <Compile Include="GLYQXClass.cs" />
     <Compile Include="GLYQXJM.cs">
       <SubType>Form</SubType>

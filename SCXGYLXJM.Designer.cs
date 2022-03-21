@@ -74,6 +74,7 @@ namespace 中铁流水线管理端
             this.Controls.Add(this.dgvSCXGYLXJM);
             this.Name = "SCXGYLXJM";
             this.Text = "生产线工艺路线界面";
+            this.Load += new System.EventHandler(this.SCXGYLXJM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSCXGYLXJM)).EndInit();
             this.ResumeLayout(false);
 
